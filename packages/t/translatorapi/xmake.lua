@@ -3,7 +3,7 @@ package("translatorapi")
     add_versions("1.0.0", "54b7beaf3944af713169d8d62d25c64eb3974ecae901a8afb819231ce0eea77b")
     add_versions("1.0.1", "351c60a4e08ce55a4b8da9bfd72d2a1cbd1216417f177ea9da2a88604e6833ad")
     add_versions("1.1.0", "e2cb1c680971696e0b49bf5a40bf8b42127549c77ce78af47965b9bb42ea421f")
-    add_versions("1.1.1", "5e259c123852ffca7c978b8c3797a4b254eaf8f0e19e04d2795195aee72d7707")
+    add_versions("1.1.1", "6735b8a2b263d1849190d8fea09deccfae967b7e503adc8267b31405de72807f")
 
     on_install(function (package)
         os.cp("include", package:installdir())
