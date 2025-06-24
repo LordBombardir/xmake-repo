@@ -7,6 +7,7 @@ package("powerranks")
     add_versions("1.0.7", "73626cbfcc92e8abe9ed2cec693f69e328e51d86aa5d08413beda73f1e3f5b95")
     add_versions("1.0.8", "36fe4a098de8d56de17c013d0921f1e3d286432d8cba7abdcc976b642247be64")
     add_versions("1.0.9", "fc760a109d44e74ac2e4dd4c4c611cd379da4bc73c351daa8b6315648684a27e")
+    add_versions("1.1.2", "13a7973eca513dde86988e531099c74791f88dfa3017e99a5b6eaced4bc77815")
 
     on_install(function (package)
         os.cp("include", package:installdir())
