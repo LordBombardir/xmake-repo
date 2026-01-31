@@ -1,21 +1,38 @@
 package("translatorapi")
-    add_urls("https://github.com/LordBombardir/LLTranslatorApi/releases/download/v$(version)/LLTranslatorApi-windows-x64.zip")
-    add_versions("1.0.0", "54b7beaf3944af713169d8d62d25c64eb3974ecae901a8afb819231ce0eea77b")
-    add_versions("1.0.1", "351c60a4e08ce55a4b8da9bfd72d2a1cbd1216417f177ea9da2a88604e6833ad")
-    add_versions("1.1.0", "e2cb1c680971696e0b49bf5a40bf8b42127549c77ce78af47965b9bb42ea421f")
-    add_versions("1.1.1", "3c5b84f4bb283cec77b3f85023ea23884362c126a94883550817fdc6e33fed27")
-    add_versions("1.1.2", "b388ee099a21be682ad81788356b7c8a5430a40a205316dacda6048e94683c7a")
-    add_versions("1.1.3", "54ff24431f5c096ac53162947dae4f2c446ef4e2e95ffc0acd830c73d747244e")
-    add_versions("1.1.5", "26932d9079bef9ac80b828dc2806768a89c65cb9f1eb8d581c69ad7fc5ef256d")
-    add_versions("1.2.0", "82f417ee3df1f3c2c173e14cb2ac3f0b12e51cb7b4dfbdc2913b08e357dab635")
-    add_versions("1.2.1", "42e492d7da70c791dba738341664b9866d5ecd7b24b1bdc6f483e21a71f7b7d8")
-    add_versions("1.2.2", "1637a2fc8762524ddef65a170941d7256d3020ecf965a7f46d2d58a051bb3a64")
-    add_versions("1.2.3", "b19e91785088e833912feddf2613312bba7f6fa976189a6f7ca319dfa9ae30d7")
-    add_versions("1.2.4", "43675458e56c93337669eeab526524a5435dcd21d88f44d2040864ae279ccc40")
-    add_versions("1.2.5", "2e42e5736a2dd0b199c4a9df12fd7865927271090d6b1877add309a792326a75")
-    add_versions("1.2.6", "d9390593eb6cf786d3684cd2dbc65f06b18d45cd08320d2f7aca356abbab769b")
-    add_versions("1.2.7", "3383fa428522c65d1d136606d0041dd116fa29e14b3d424e2e39912b90084129")
-    add_versions("1.2.8", "18f7086d4237845d66fb51acbd8f1e3bb57a1454798631e936ad86aba1bbdb1d")
+    add_configs("target_type", {
+        description = "Mod target type",
+        default = "server",
+        values = {"server", "client"}
+    })
+
+    add_configs("mode", {
+        description = "Build mode",
+        default = "release",
+        values = {"release", "debug"}
+    })
+
+    add_urls("https://github.com/LordBombardir/LLTranslatorApi/releases/download/v$(version)/LLTranslatorApi-v$(version)-{target_type}-{mode}-windows-x64.zip")
+
+    add_versions("1.3.0", {
+        client = {
+            release = "9401629e572a23070f746bf41ab954566944179ebad6189f549a566adc59d2bf",
+            debug   = "847a0061d026ac4045578747ef7334fd83bf57cb7da4e27d9fe1701aaa7f1f45"
+        },
+        server = {
+            release = "619292f33cc85bb0bafb6c8666faf1416bff5ae922cea19556e854b4a454119d",
+            debug   = "f4b85842fdbc29b2373f5217aac06cdda1846b2c524a6e6f1257ceb7bcddf6f7"
+        }
+    })
+    add_versions("1.3.1", {
+        client = {
+            release = "4b77eb901acd7537f190e2151115db1cff5e161da8612d199342e6ae5fc05bc9",
+            debug   = "8f70cf93fedd819cf9658e1e50ec205dd30d56a2e939163cbf5fc0cb4531094a"
+        },
+        server = {
+            release = "fa07913b1fa7cb05951b75136ebe8d5b17cba3fd500c921952833196444fb973",
+            debug   = "07d3e21c19ff04fca70284d0f7ea78e15b67c5717d22a80ecfa7c9ce8803399a"
+        }
+    })
 
     on_install(function (package)
         os.cp("include", package:installdir())
