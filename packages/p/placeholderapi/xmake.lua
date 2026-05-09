@@ -11,11 +11,6 @@ package("placeholderapi")
         values = {"release", "debug"}
     })
 
-    add_versions("1.0.0")
-    add_versions("1.0.1")
-    add_versions("1.0.2")
-    add_versions("26.10.1")
-
     local shas = {
         ["1.0.0-server-release"] = "353321f6b891690feb083e38df3e039775914b0a1c834408b2c8d2038d5e23da",
         ["1.0.0-server-debug"]   = "2d04d4935220ec14bcc9c5922a9ba4e52000838e83606e366ddf14c582c187bd",
@@ -38,25 +33,15 @@ package("placeholderapi")
         ["26.10.1-client-debug"]   = "6ad8f34d4d832ca03704fd6a022b566abbae0bad85207b71c6a0012b9d3a9e20",
     }
 
-    on_source(function (package)
+    on_load(function (package)
         local base_ver = package:version_str()
         local tt = package:config("target_type") or "server"
         local mode = package:config("mode") or "release"
-        local ver_key = base_ver .. "-" .. tt .. "-" .. mode
+        local ver = base_ver .. "-" .. tt .. "-" .. mode
 
-        local url = ("https://github.com/LordBombardir/LLPlaceholderApi/releases/download/v%s/LLPlaceholderApi-v%s-%s-%s-windows-x64.zip"):format(base_ver, base_ver, tt, mode)
-        local hash = shas[ver_key]
-
-        package:add("urls", url)
-        if hash then
-            package:add("hashes", hash)
-        end
-    end)
-
-    on_load(function (package)
-        local tt = package:config("target_type") or "server"
-        local mode = package:config("mode") or "release"
-        package:set("version", package:version_str() .. "-" .. tt .. "-" .. mode)
+        package:set("version", ver)
+        package:add("urls", ("https://github.com/LordBombardir/LLPlaceholderApi/releases/download/v%s/LLPlaceholderApi-v%s-%s-%s-windows-x64.zip"):format(base_ver, base_ver, tt, mode))
+        package:add("hashes", shas[ver])
     end)
 
     on_install(function (package)
