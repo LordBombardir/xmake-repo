@@ -33,19 +33,25 @@ package("placeholderapi")
         ["26.10.1-client-debug"]   = "6ad8f34d4d832ca03704fd6a022b566abbae0bad85207b71c6a0012b9d3a9e20",
     }
 
-    on_load(function (package)
-        local base_ver = package:version_str()        
+    on_source(function (package)
+        local base_ver = package:version_str()
         local tt = package:config("target_type") or "server"
         local mode = package:config("mode") or "release"
-        local ver = base_ver .. "-" .. tt .. "-" .. mode
+        local ver_key = base_ver .. "-" .. tt .. "-" .. mode
 
-        package:add("urls", ("https://github.com/LordBombardir/LLPlaceholderApi/releases/download/v%s/LLPlaceholderApi-v%s-%s-%s-windows-x64.zip"):format(base_ver, base_ver, tt, mode))
-        
-        if shas[ver_key] then
-            package:add("hashes", shas[ver_key])
+        local url = ("https://github.com"):format(base_ver, base_ver, tt, mode)
+        local hash = shas[ver_key]
+
+        package:add("urls", url)
+        if hash then
+            package:add("hashes", hash)
         end
-        
-        package:set("version", ver)
+    end)
+
+    on_load(function (package)
+        local tt = package:config("target_type") or "server"
+        local mode = package:config("mode") or "release"
+        package:set("version", package:version_str() .. "-" .. tt .. "-" .. mode)
     end)
 
     on_install(function (package)
