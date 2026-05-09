@@ -10,6 +10,8 @@ package("placeholderapi")
         default = "release",
         values = {"release", "debug"}
     })
+    
+    add_urls("https://github.com/LordBombardir/LLPlaceholderApi.git")
 
     local shas = {
         ["1.0.0-server-release"] = "353321f6b891690feb083e38df3e039775914b0a1c834408b2c8d2038d5e23da",
