@@ -24,6 +24,11 @@ package("placeholderapi")
         ["1.0.1-client-release"] = "0649df916831d3faf15cb6fd6217ed93f0e2d7cd9b67a1aba67542771182ec40",
         ["1.0.1-client-debug"]   = "a3c393b6d7c2751dc8ba9659c75aaf658fa30f7ba822a02f7abaa683086df53f",
     
+        ["1.0.2-server-release"] = "166bc441531f50eea33d08746afc063da61416d4e442b874557a57cfca0fadf8",
+        ["1.0.2-server-debug"]   = "3c904f588a098f2b70cebf02f2eaf62116d99176d8db8417bf6083f4621c42db",
+        ["1.0.2-client-release"] = "c3b8f9a84f36bcf968f6a93e1b66d49c7d9d1440d22eb95042760882db96cc96",
+        ["1.0.2-client-debug"]   = "512723ebfa6e6882b27a3253ab8f5690d93aafe91e44846d8f956073c5b3a599",
+    
         ["26.10.1-server-release"] = "4aef0107ff67b7046c93260f6f6885018d18feb063be4f2086b55938853e6e2e",
         ["26.10.1-server-debug"]   = "ffa93705af1d38d7e5dfa2fa84ad7dbedb5383527a8bc3c8c878764a937fb4a0",
         ["26.10.1-client-release"] = "f7906f215dd7c6b1ff7ff60b82a578d4c18f2283e929ce26b06a92ee0c7adc8f",
