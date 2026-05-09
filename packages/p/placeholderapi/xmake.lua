@@ -34,9 +34,7 @@ package("placeholderapi")
     }
 
     on_load(function (package)
-        local base_ver = package:version_str()
-        local pure_ver = (package:sourceversion() or base_ver)
-        
+        local base_ver = package:version_str()        
         local tt = package:config("target_type") or "server"
         local mode = package:config("mode") or "release"
         local ver = base_ver .. "-" .. tt .. "-" .. mode
