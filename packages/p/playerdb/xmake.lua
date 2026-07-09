@@ -16,6 +16,9 @@ package("playerdb")
     local shas = {    
         ["26.20.0-server-release"] = "0f2f9e3cc3c5616af6e5b7fc1879c711eadc849e9465028143ef9d3626686930",
         ["26.20.0-client-release"] = "bedfa438e96908d0b116aa781ea03efb0689b21a45f3adf49732621ee57246f4",
+        
+        ["26.20.1-server-release"] = "088d27d67fd95b83b7bd51353b824fd4f1d724f0103d8a850c5dbcaae7334933",
+        ["26.20.1-client-release"] = "bcf1fc881ef2cd2dece59e4e40a82053d4593cd722e19472c00c7cbe35bd003c"
     }
 
     on_load(function (package)
