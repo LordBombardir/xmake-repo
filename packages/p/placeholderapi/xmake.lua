@@ -43,6 +43,11 @@ package("placeholderapi")
         ["26.20.1-server-debug"]   = "b4ac1294edc3a38c466d0876e8e673cb3d879c0eb7b433f6e36ea26adefb1084",
         ["26.20.1-client-release"] = "7260198098536abd2ecabcc00bc89d18511d523b5e7571d0f45b3b5a3b0c6ae9",
         ["26.20.1-client-debug"]   = "058db090cab9f078fa1635b6f4a191689f95eb8d47ea37bc356dd8d82b01ee1a",
+    
+        ["26.20.2-server-release"] = "36cd13926cb01614d460ceadcdb76091fb288ba00bfbcac7a436b71ceed7b65d",
+        ["26.20.2-server-debug"]   = "7c84016df8b4a51ae13f8c3a7b1c364d698bba6f03b78bbed0223fdce82b4cf9",
+        ["26.20.2-client-release"] = "7b4325b6be4f1f9f1623551906e107e4fdc09f4511eb5eb0aefa93a8aab8a1c7",
+        ["26.20.2-client-debug"]   = "84d605c83d307ae3d184fb53153a508806c861e37aa48e2fcaf4ea7034504b87",
     }
 
     on_load(function (package)
