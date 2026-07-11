@@ -1,15 +1,35 @@
 package("powerranks")
-    add_urls("https://github.com/LordBombardir/LLPowerRanks/releases/download/v$(version)/LLPowerRanks-windows-x64.zip")
-    add_versions("1.0.3", "bc08e429d24a883b339b57a8eedbfaf2379787bb24162516e6c7df72b1762f16")
-    add_versions("1.0.4", "cf71c0344d469cb366ffc755ee9d8884a6a4a1041b1cb7126a6370cdb4ebd74b")
-    add_versions("1.0.5", "af6387e51243e2c28c7f1360294d89be870d32b59f2bee201dd2b00ab028ce3a")
-    add_versions("1.0.6", "d053c0eaf2f0d47bff6e4209a68ec1b375b3193d03bb788f6f5a44528d9f5d14")
-    add_versions("1.0.7", "73626cbfcc92e8abe9ed2cec693f69e328e51d86aa5d08413beda73f1e3f5b95")
-    add_versions("1.0.8", "36fe4a098de8d56de17c013d0921f1e3d286432d8cba7abdcc976b642247be64")
-    add_versions("1.0.9", "fc760a109d44e74ac2e4dd4c4c611cd379da4bc73c351daa8b6315648684a27e")
-    add_versions("1.1.2", "13a7973eca513dde86988e531099c74791f88dfa3017e99a5b6eaced4bc77815")
-    add_versions("1.1.3", "83ac849bf1483c3c39f3d2f2df2b92370d1327947c3a0f030f8c44c22a44df8c")
-    add_versions("1.1.4", "414ffd74dd28d1c1e9029bc6a02006ee2377b7d276ba96dd68a5c228cc76d0cc")
+    add_configs("target_type", {
+        description = "Mod target type",
+        default = "server",
+        values = {"server", "client"}
+    })
+
+    add_configs("mode", {
+        description = "Build mode",
+        default = "release",
+        values = {"release", "debug"}
+    })
+    
+    add_urls("https://github.com/LordBombardir/LLPowerRanks.git")
+
+    local shas = {
+        ["26.20.1-client-release"] = "d1086297e9d5f2e6a75675bf7765ebfde3d9fba8beda1dcb249367c8e83ab992",
+        ["26.20.1-client-debug"] = "ffcfeaaa1988140ed5f70ae3647e5245f16958c75020bd650a9d975cd701ec86",
+        ["26.20.1-server-release"] = "b9c84a8d023664951b36943a76cc2591e157c4f92791181f325b2276d5449c89",
+        ["26.20.1-server-debug"] = "1c6100ecfe87bf5e689c2d38a9e3987c4741070c448d144f2f544273ea8ffaca",
+    }
+
+    on_load(function (package)
+        local base_ver = package:version_str()
+        local tt = package:config("target_type") or "server"
+        local mode = package:config("mode") or "release"
+        local ver = base_ver .. "-" .. tt .. "-" .. mode
+
+        package:set("version", ver)
+        package:add("urls", ("https://github.com/LordBombardir/LLPowerRanks/releases/download/v%s/LLPowerRanks-v%s-%s-%s-windows-x64.zip"):format(base_ver, base_ver, tt, mode))
+        package:add("hashes", shas[ver])
+    end)
 
     on_install(function (package)
         os.cp("include", package:installdir())
